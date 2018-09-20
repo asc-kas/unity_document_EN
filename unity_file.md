@@ -112,7 +112,6 @@ Welcome to ASCSSDK. ASCSSDK is an advertising integration SDk that allows you to
         SubmitGameDataAfferent(ASCExtraGameData.TYPE_ENTER_GAME);
     }
     
-    //上传数据
     //upload data
     void SubmitGameDataAfferent(int type)
     {
@@ -151,7 +150,7 @@ Welcome to ASCSSDK. ASCSSDK is an advertising integration SDk that allows you to
         }
     }
 
-    //登陆回调
+    //In the callback
     void OnLoginSuc(ASCLoginResult result)
     {
         if (!result.isSuc)
@@ -196,11 +195,11 @@ Welcome to ASCSSDK. ASCSSDK is an advertising integration SDk that allows you to
     {
         if(status==CallBackStatus.SUCCEED)
         {
-            //支付成功(pay success)
+            //pay success
         }
         else
         {
-            //支付失败(Payment Failed)
+            //Payment Failed
         }
     }
     
@@ -312,7 +311,7 @@ Welcome to ASCSSDK. ASCSSDK is an advertising integration SDk that allows you to
     //Gift bag for
     void OnGetGiftInfo(int propNumber, string msg, GiftBagType type)
     {
-        //PropNumber is the number of props sent down, MSG is the status information (if it is 0, the prop sent down fails), and type is the prop type (gold coin, diamond, others).
+        //PropNumber is the number of props sent down(if it is 0, the prop sent down fails), MSG is the status information , and type is the prop type (gold coin, diamond, others).
     }
 
 
