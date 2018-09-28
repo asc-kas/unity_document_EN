@@ -138,17 +138,23 @@ Welcome to ASCSSDK. ASCSSDK is an advertising integration SDk that allows you to
         ASCSDKInterface.Instance.SubmitGameData(AfferentData);
     }
     
-    void Update()
-    {
-        //exit（*Call when pressed）
-        if (Input.GetKeyUp(KeyCode.Escape))
+     void Update()
         {
-            //Call the exit confirmation box of the SDK and return false, indicating that the SDK does not support the exit box, the game needs to use its own exit box
-            ASCSDKInterface.Instance.SDKExit();
-            //Upload data before exit (must)
-            SubmitGameDataAfferent(ASCExtraGameData.TYPE_EXIT_GAME);
+            //exit（*Call when pressed）
+            if (Input.GetKeyUp(KeyCode.Escape))
+            {
+                 //Call the exit confirmation box of the channel, return false, the SDK does not support, the game needs to use its own exit box
+    			if (ASCSDKInterface.Instance.IsSupportExit())
+    			{
+    				ASCSDKInterface.Instance.SDKExit();
+    			}
+    			else
+    			{
+    				//Call your exit interface
+    			}
+    			SubmitGameDataAfferent(ASCExtraGameData.TYPE_EXIT_GAME);
+            }
         }
-    }
 
     //In the callback
     void OnLoginSuc(ASCLoginResult result)
@@ -309,9 +315,9 @@ Welcome to ASCSSDK. ASCSSDK is an advertising integration SDk that allows you to
     }
     
     //Gift bag for
-    void OnGetGiftInfo(int propNumber, string msg, GiftBagType type)
+    void OnGetGiftInfo(int propNumber, string msg, string type)
     {
-        //PropNumber is the number of props sent down(if it is 0, the prop sent down fails), MSG is the status information , and type is the prop type (gold coin, diamond, others).
+        //PropNumber is the number of props sent down, MSG is the status information (if it is 0, the prop sent down fails), and type is the prop type (Golds, Diamonds, Or other customizations).
     }
 
 
